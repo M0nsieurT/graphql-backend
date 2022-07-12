@@ -4,23 +4,22 @@ const { gql } = require('apollo-server')
 
 const typeDefs = gql`
 
-  type Student {
+  type Card {
     id: ID!
-    email: String!
-    fullName: String!
-    dept: String
-    enrolled: Boolean
+    name: String!
+    description: String!
+    power: Int
+    element_id: Int
   }
 
   type Query {
-    enrollment: [Student!]
-    students: [Student!]!
-    student(id: ID!): Student
+    cards: [Card!]!
+    card(id: ID!): Card
   }
 
   type Mutation {
-    registerStudent(email: String!, fullName: String!, dept: String): Student!
-    enroll(id: ID!): Student
+    registerCard(name: String!, description: String!, power: String, element_id: String): Card!
+    enroll(id: ID!): Card
   }
 `
 module.exports = {

@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model card {
+  id           Int           @id @default(autoincrement())
+  name         String        @db.Text
+  description  String        @db.Text
+  power        Int
+  element_id   Int
+  rank_id      Int?
+  card_type_id Int           @default(1)
+  max_chain    Int           @default(1)
+  card_type    card_type     @relation(fields: [card_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_card_card_type")
+  element      element       @relation(fields: [element_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_card_element")
+  card_rank    card_rank?    @relation(fields: [rank_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_card_card_rank")
+  player_card  player_card[]
+
+  @@index([rank_id], map: "FK_card_card_rank")
+  @@index([card_type_id], map: "FK_card_card_type")
+  @@index([element_id], map: "FK_card_element")
+}
+
+model card_rank {
+  id   Int    @id @default(autoincrement())
+  code String @db.TinyText
+  name String @db.TinyText
+  card card[]
+}
+
+model card_type {
+  id   Int    @id @default(autoincrement())
+  name String @db.Text
+  card card[]
+}
+
+model element {
+  id                                                             Int                @id @default(autoincrement())
+  name                                                           String             @db.TinyText
+  card                                                           card[]
+  element_weakness_elementToelement_weakness_element_id          element_weakness[] @relation("elementToelement_weakness_element_id")
+  element_weakness_elementToelement_weakness_weakness_element_id element_weakness[] @relation("elementToelement_weakness_weakness_element_id")
+}
+
+model element_weakness {
+  element_id                                            Int
+  weakness_element_id                                   Int
+  coef                                                  Float   @db.Float
+  element_elementToelement_weakness_element_id          element @relation("elementToelement_weakness_element_id", fields: [element_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__element")
+  element_elementToelement_weakness_weakness_element_id element @relation("elementToelement_weakness_weakness_element_id", fields: [weakness_element_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_element_weakness_element")
+
+  @@unique([element_id, weakness_element_id], map: "Index 3")
+  @@index([weakness_element_id], map: "FK_element_weakness_element")
+}
+
+model player {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.Text
+  player_card player_card[]
+}
+
+model player_card {
+  id        Int    @id @default(autoincrement())
+  name      String @db.Text
+  card_id   Int
+  player_id Int
+  card      card   @relation(fields: [card_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_player_card_card")
+  player    player @relation(fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_player_card_player")
+
+  @@index([card_id], map: "FK_player_card_card")
+  @@index([player_id], map: "FK_player_card_player")
+}

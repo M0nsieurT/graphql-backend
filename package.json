@@ -7,11 +7,21 @@
     "start": "node src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["Grapghql", "API", "Node.js", "Prisma", "Postgres", "Docker"],
+  "keywords": [
+    "Grapghql",
+    "API",
+    "Node.js",
+    "Prisma",
+    "MySQL"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^4.0.0",
     "apollo-server": "^3.10.0",
     "graphql": "^16.5.0"
+  },
+  "devDependencies": {
+    "prisma": "^4.0.0"
   }
 }
