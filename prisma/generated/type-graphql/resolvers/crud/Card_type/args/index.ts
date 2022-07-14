@@ -1,0 +1,12 @@
+export { AggregateCard_typeArgs } from "./AggregateCard_typeArgs";
+export { CreateManyCard_typeArgs } from "./CreateManyCard_typeArgs";
+export { CreateOneCard_typeArgs } from "./CreateOneCard_typeArgs";
+export { DeleteManyCard_typeArgs } from "./DeleteManyCard_typeArgs";
+export { DeleteOneCard_typeArgs } from "./DeleteOneCard_typeArgs";
+export { FindFirstCard_typeArgs } from "./FindFirstCard_typeArgs";
+export { FindManyCard_typeArgs } from "./FindManyCard_typeArgs";
+export { FindUniqueCard_typeArgs } from "./FindUniqueCard_typeArgs";
+export { GroupByCard_typeArgs } from "./GroupByCard_typeArgs";
+export { UpdateManyCard_typeArgs } from "./UpdateManyCard_typeArgs";
+export { UpdateOneCard_typeArgs } from "./UpdateOneCard_typeArgs";
+export { UpsertOneCard_typeArgs } from "./UpsertOneCard_typeArgs";

@@ -1,0 +1,12 @@
+export { AggregateCardArgs } from "./AggregateCardArgs";
+export { CreateManyCardArgs } from "./CreateManyCardArgs";
+export { CreateOneCardArgs } from "./CreateOneCardArgs";
+export { DeleteManyCardArgs } from "./DeleteManyCardArgs";
+export { DeleteOneCardArgs } from "./DeleteOneCardArgs";
+export { FindFirstCardArgs } from "./FindFirstCardArgs";
+export { FindManyCardArgs } from "./FindManyCardArgs";
+export { FindUniqueCardArgs } from "./FindUniqueCardArgs";
+export { GroupByCardArgs } from "./GroupByCardArgs";
+export { UpdateManyCardArgs } from "./UpdateManyCardArgs";
+export { UpdateOneCardArgs } from "./UpdateOneCardArgs";
+export { UpsertOneCardArgs } from "./UpsertOneCardArgs";

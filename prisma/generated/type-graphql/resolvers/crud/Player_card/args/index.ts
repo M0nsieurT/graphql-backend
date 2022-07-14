@@ -1,0 +1,12 @@
+export { AggregatePlayer_cardArgs } from "./AggregatePlayer_cardArgs";
+export { CreateManyPlayer_cardArgs } from "./CreateManyPlayer_cardArgs";
+export { CreateOnePlayer_cardArgs } from "./CreateOnePlayer_cardArgs";
+export { DeleteManyPlayer_cardArgs } from "./DeleteManyPlayer_cardArgs";
+export { DeleteOnePlayer_cardArgs } from "./DeleteOnePlayer_cardArgs";
+export { FindFirstPlayer_cardArgs } from "./FindFirstPlayer_cardArgs";
+export { FindManyPlayer_cardArgs } from "./FindManyPlayer_cardArgs";
+export { FindUniquePlayer_cardArgs } from "./FindUniquePlayer_cardArgs";
+export { GroupByPlayer_cardArgs } from "./GroupByPlayer_cardArgs";
+export { UpdateManyPlayer_cardArgs } from "./UpdateManyPlayer_cardArgs";
+export { UpdateOnePlayer_cardArgs } from "./UpdateOnePlayer_cardArgs";
+export { UpsertOnePlayer_cardArgs } from "./UpsertOnePlayer_cardArgs";

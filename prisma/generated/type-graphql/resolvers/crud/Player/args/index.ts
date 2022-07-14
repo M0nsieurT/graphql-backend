@@ -1,0 +1,12 @@
+export { AggregatePlayerArgs } from "./AggregatePlayerArgs";
+export { CreateManyPlayerArgs } from "./CreateManyPlayerArgs";
+export { CreateOnePlayerArgs } from "./CreateOnePlayerArgs";
+export { DeleteManyPlayerArgs } from "./DeleteManyPlayerArgs";
+export { DeleteOnePlayerArgs } from "./DeleteOnePlayerArgs";
+export { FindFirstPlayerArgs } from "./FindFirstPlayerArgs";
+export { FindManyPlayerArgs } from "./FindManyPlayerArgs";
+export { FindUniquePlayerArgs } from "./FindUniquePlayerArgs";
+export { GroupByPlayerArgs } from "./GroupByPlayerArgs";
+export { UpdateManyPlayerArgs } from "./UpdateManyPlayerArgs";
+export { UpdateOnePlayerArgs } from "./UpdateOnePlayerArgs";
+export { UpsertOnePlayerArgs } from "./UpsertOnePlayerArgs";

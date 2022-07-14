@@ -1,0 +1,12 @@
+export { AggregateElement_weaknessArgs } from "./AggregateElement_weaknessArgs";
+export { CreateManyElement_weaknessArgs } from "./CreateManyElement_weaknessArgs";
+export { CreateOneElement_weaknessArgs } from "./CreateOneElement_weaknessArgs";
+export { DeleteManyElement_weaknessArgs } from "./DeleteManyElement_weaknessArgs";
+export { DeleteOneElement_weaknessArgs } from "./DeleteOneElement_weaknessArgs";
+export { FindFirstElement_weaknessArgs } from "./FindFirstElement_weaknessArgs";
+export { FindManyElement_weaknessArgs } from "./FindManyElement_weaknessArgs";
+export { FindUniqueElement_weaknessArgs } from "./FindUniqueElement_weaknessArgs";
+export { GroupByElement_weaknessArgs } from "./GroupByElement_weaknessArgs";
+export { UpdateManyElement_weaknessArgs } from "./UpdateManyElement_weaknessArgs";
+export { UpdateOneElement_weaknessArgs } from "./UpdateOneElement_weaknessArgs";
+export { UpsertOneElement_weaknessArgs } from "./UpsertOneElement_weaknessArgs";
