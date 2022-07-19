@@ -17,15 +17,38 @@ async function main() {
     validate: false,
   });
 
-  const prisma = new PrismaClient();
+  const prisma = new PrismaClient({
+    log: [
+      {
+        emit: 'stdout',
+        level: 'query',
+      },
+      {
+        emit: 'stdout',
+        level: 'error',
+      },
+      {
+        emit: 'stdout',
+        level: 'info',
+      },
+      {
+        emit: 'stdout',
+        level: 'warn',
+      },
+    ],
+  });
   await prisma.$connect();
 
   const server = new ApolloServer({
     schema,
     context: (): Context => ({ prisma }),
+	// https://www.apollographql.com/blog/graphql/security/why-you-should-disable-graphql-introspection-in-production/#:~:text=You%20can%20turn%20off%20introspection,%2C%20resolvers%2C%20introspection%3A%20process.
+	introspection: process.env.NODE_ENV !== 'production'
   });
-  const { port } = await server.listen(4000);
-  console.log(`GraphQL is listening on ${port}!`);
+  
+  server.listen(4000).then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  });
 }
 
 main().catch(console.error);
