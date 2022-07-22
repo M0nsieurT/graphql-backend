@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node --transpile-only ./index.ts",
-    "generate": "prisma generate"
+    "generate": "prisma generate",
+    "build": "tsc",
+    "pm2": "pm2 start ./dist/index.js"
   },
   "keywords": [
     "Grapghql",
