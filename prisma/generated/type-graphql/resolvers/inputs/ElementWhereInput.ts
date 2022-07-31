@@ -3,6 +3,7 @@ import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { CardListRelationFilter } from "../inputs/CardListRelationFilter";
+import { Element_affinityListRelationFilter } from "../inputs/Element_affinityListRelationFilter";
 import { Element_weaknessListRelationFilter } from "../inputs/Element_weaknessListRelationFilter";
 import { IntFilter } from "../inputs/IntFilter";
 import { StringFilter } from "../inputs/StringFilter";
@@ -40,6 +41,16 @@ export class ElementWhereInput {
     nullable: true
   })
   card?: CardListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => Element_affinityListRelationFilter, {
+    nullable: true
+  })
+  element_affinity_elementToelement_affinity_element_id?: Element_affinityListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => Element_affinityListRelationFilter, {
+    nullable: true
+  })
+  element_affinity_elementToelement_affinity_affinity_element?: Element_affinityListRelationFilter | undefined;
 
   @TypeGraphQL.Field(_type => Element_weaknessListRelationFilter, {
     nullable: true

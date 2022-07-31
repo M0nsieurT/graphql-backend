@@ -15,6 +15,16 @@ export class ElementCount {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
+  element_affinity_elementToelement_affinity_element_id!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
+  element_affinity_elementToelement_affinity_affinity_element!: number;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: false
+  })
   element_weakness_elementToelement_weakness_element_id!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {

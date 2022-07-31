@@ -30,6 +30,11 @@ export class CardCreateWithoutPlayer_cardInput {
   })
   max_chain?: number | undefined;
 
+  @TypeGraphQL.Field(_type => Card_rankCreateNestedOneWithoutCardInput, {
+    nullable: true
+  })
+  card_rank?: Card_rankCreateNestedOneWithoutCardInput | undefined;
+
   @TypeGraphQL.Field(_type => Card_typeCreateNestedOneWithoutCardInput, {
     nullable: true
   })
@@ -39,9 +44,4 @@ export class CardCreateWithoutPlayer_cardInput {
     nullable: false
   })
   element!: ElementCreateNestedOneWithoutCardInput;
-
-  @TypeGraphQL.Field(_type => Card_rankCreateNestedOneWithoutCardInput, {
-    nullable: true
-  })
-  card_rank?: Card_rankCreateNestedOneWithoutCardInput | undefined;
 }

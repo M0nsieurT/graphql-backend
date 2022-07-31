@@ -69,6 +69,11 @@ export class CardWhereInput {
   })
   max_chain?: IntFilter | undefined;
 
+  @TypeGraphQL.Field(_type => Card_rankRelationFilter, {
+    nullable: true
+  })
+  card_rank?: Card_rankRelationFilter | undefined;
+
   @TypeGraphQL.Field(_type => Card_typeRelationFilter, {
     nullable: true
   })
@@ -78,11 +83,6 @@ export class CardWhereInput {
     nullable: true
   })
   element?: ElementRelationFilter | undefined;
-
-  @TypeGraphQL.Field(_type => Card_rankRelationFilter, {
-    nullable: true
-  })
-  card_rank?: Card_rankRelationFilter | undefined;
 
   @TypeGraphQL.Field(_type => Player_cardListRelationFilter, {
     nullable: true

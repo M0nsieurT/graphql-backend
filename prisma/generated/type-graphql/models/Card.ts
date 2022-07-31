@@ -52,11 +52,11 @@ export class Card {
   })
   max_chain!: number;
 
+  card_rank?: Card_rank | null;
+
   card_type?: Card_type;
 
   element?: Element;
-
-  card_rank?: Card_rank | null;
 
   player_card?: Player_card[];
 

@@ -32,15 +32,15 @@ export class CardUpdateWithoutCard_typeInput {
   })
   max_chain?: IntFieldUpdateOperationsInput | undefined;
 
-  @TypeGraphQL.Field(_type => ElementUpdateOneRequiredWithoutCardNestedInput, {
-    nullable: true
-  })
-  element?: ElementUpdateOneRequiredWithoutCardNestedInput | undefined;
-
   @TypeGraphQL.Field(_type => Card_rankUpdateOneWithoutCardNestedInput, {
     nullable: true
   })
   card_rank?: Card_rankUpdateOneWithoutCardNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => ElementUpdateOneRequiredWithoutCardNestedInput, {
+    nullable: true
+  })
+  element?: ElementUpdateOneRequiredWithoutCardNestedInput | undefined;
 
   @TypeGraphQL.Field(_type => Player_cardUpdateManyWithoutCardNestedInput, {
     nullable: true

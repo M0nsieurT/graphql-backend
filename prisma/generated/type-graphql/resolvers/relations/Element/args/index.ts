@@ -1,3 +1,5 @@
 export { ElementCardArgs } from "./ElementCardArgs";
+export { ElementElement_affinity_elementToelement_affinity_affinity_elementArgs } from "./ElementElement_affinity_elementToelement_affinity_affinity_elementArgs";
+export { ElementElement_affinity_elementToelement_affinity_element_idArgs } from "./ElementElement_affinity_elementToelement_affinity_element_idArgs";
 export { ElementElement_weakness_elementToelement_weakness_element_idArgs } from "./ElementElement_weakness_elementToelement_weakness_element_idArgs";
 export { ElementElement_weakness_elementToelement_weakness_weakness_element_idArgs } from "./ElementElement_weakness_elementToelement_weakness_weakness_element_idArgs";

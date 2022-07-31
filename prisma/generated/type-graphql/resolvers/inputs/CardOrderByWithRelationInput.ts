@@ -52,6 +52,11 @@ export class CardOrderByWithRelationInput {
   })
   max_chain?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => Card_rankOrderByWithRelationInput, {
+    nullable: true
+  })
+  card_rank?: Card_rankOrderByWithRelationInput | undefined;
+
   @TypeGraphQL.Field(_type => Card_typeOrderByWithRelationInput, {
     nullable: true
   })
@@ -61,11 +66,6 @@ export class CardOrderByWithRelationInput {
     nullable: true
   })
   element?: ElementOrderByWithRelationInput | undefined;
-
-  @TypeGraphQL.Field(_type => Card_rankOrderByWithRelationInput, {
-    nullable: true
-  })
-  card_rank?: Card_rankOrderByWithRelationInput | undefined;
 
   @TypeGraphQL.Field(_type => Player_cardOrderByRelationAggregateInput, {
     nullable: true

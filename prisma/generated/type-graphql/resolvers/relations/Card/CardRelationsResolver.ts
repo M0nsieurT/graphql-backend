@@ -9,6 +9,17 @@ import { transformFields, getPrismaFromContext, transformCountFieldIntoSelectRel
 
 @TypeGraphQL.Resolver(_of => Card)
 export class CardRelationsResolver {
+  @TypeGraphQL.FieldResolver(_type => Card_rank, {
+    nullable: true
+  })
+  async card_rank(@TypeGraphQL.Root() card: Card, @TypeGraphQL.Ctx() ctx: any): Promise<Card_rank | null> {
+    return getPrismaFromContext(ctx).card.findUnique({
+      where: {
+        id: card.id,
+      },
+    }).card_rank({});
+  }
+
   @TypeGraphQL.FieldResolver(_type => Card_type, {
     nullable: false
   })
@@ -29,17 +40,6 @@ export class CardRelationsResolver {
         id: card.id,
       },
     }).element({});
-  }
-
-  @TypeGraphQL.FieldResolver(_type => Card_rank, {
-    nullable: true
-  })
-  async card_rank(@TypeGraphQL.Root() card: Card, @TypeGraphQL.Ctx() ctx: any): Promise<Card_rank | null> {
-    return getPrismaFromContext(ctx).card.findUnique({
-      where: {
-        id: card.id,
-      },
-    }).card_rank({});
   }
 
   @TypeGraphQL.FieldResolver(_type => [Player_card], {
