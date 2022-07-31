@@ -39,6 +39,14 @@ type AggregateElement {
   _sum: ElementSumAggregate
 }
 
+type AggregateElement_affinity {
+  _avg: Element_affinityAvgAggregate
+  _count: Element_affinityCountAggregate
+  _max: Element_affinityMaxAggregate
+  _min: Element_affinityMinAggregate
+  _sum: Element_affinitySumAggregate
+}
+
 type AggregateElement_weakness {
   _avg: Element_weaknessAvgAggregate
   _count: Element_weaknessCountAggregate
@@ -980,6 +988,8 @@ input Card_typeWhereUniqueInput {
 type Element {
   _count: ElementCount
   card(cursor: CardWhereUniqueInput, distinct: [CardScalarFieldEnum!], orderBy: [CardOrderByWithRelationInput!], skip: Int, take: Int, where: CardWhereInput): [Card!]!
+  element_affinity_elementToelement_affinity_affinity_element(cursor: Element_affinityWhereUniqueInput, distinct: [Element_affinityScalarFieldEnum!], orderBy: [Element_affinityOrderByWithRelationInput!], skip: Int, take: Int, where: Element_affinityWhereInput): [Element_affinity!]!
+  element_affinity_elementToelement_affinity_element_id(cursor: Element_affinityWhereUniqueInput, distinct: [Element_affinityScalarFieldEnum!], orderBy: [Element_affinityOrderByWithRelationInput!], skip: Int, take: Int, where: Element_affinityWhereInput): [Element_affinity!]!
   element_weakness_elementToelement_weakness_element_id(cursor: Element_weaknessWhereUniqueInput, distinct: [Element_weaknessScalarFieldEnum!], orderBy: [Element_weaknessOrderByWithRelationInput!], skip: Int, take: Int, where: Element_weaknessWhereInput): [Element_weakness!]!
   element_weakness_elementToelement_weakness_weakness_element_id(cursor: Element_weaknessWhereUniqueInput, distinct: [Element_weaknessScalarFieldEnum!], orderBy: [Element_weaknessOrderByWithRelationInput!], skip: Int, take: Int, where: Element_weaknessWhereInput): [Element_weakness!]!
   id: Int!
@@ -996,6 +1006,8 @@ input ElementAvgOrderByAggregateInput {
 
 type ElementCount {
   card: Int!
+  element_affinity_elementToelement_affinity_affinity_element: Int!
+  element_affinity_elementToelement_affinity_element_id: Int!
   element_weakness_elementToelement_weakness_element_id: Int!
   element_weakness_elementToelement_weakness_weakness_element_id: Int!
 }
@@ -1013,6 +1025,8 @@ input ElementCountOrderByAggregateInput {
 
 input ElementCreateInput {
   card: CardCreateNestedManyWithoutElementInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_affinity_elementInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_element_idInput
   element_weakness_elementToelement_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_element_idInput
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_weakness_element_idInput
   name: String!
@@ -1027,6 +1041,18 @@ input ElementCreateNestedOneWithoutCardInput {
   connect: ElementWhereUniqueInput
   connectOrCreate: ElementCreateOrConnectWithoutCardInput
   create: ElementCreateWithoutCardInput
+}
+
+input ElementCreateNestedOneWithoutElement_affinity_elementToelement_affinity_affinity_elementInput {
+  connect: ElementWhereUniqueInput
+  connectOrCreate: ElementCreateOrConnectWithoutElement_affinity_elementToelement_affinity_affinity_elementInput
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput
+}
+
+input ElementCreateNestedOneWithoutElement_affinity_elementToelement_affinity_element_idInput {
+  connect: ElementWhereUniqueInput
+  connectOrCreate: ElementCreateOrConnectWithoutElement_affinity_elementToelement_affinity_element_idInput
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_element_idInput
 }
 
 input ElementCreateNestedOneWithoutElement_weakness_elementToelement_weakness_element_idInput {
@@ -1046,6 +1072,16 @@ input ElementCreateOrConnectWithoutCardInput {
   where: ElementWhereUniqueInput!
 }
 
+input ElementCreateOrConnectWithoutElement_affinity_elementToelement_affinity_affinity_elementInput {
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput!
+  where: ElementWhereUniqueInput!
+}
+
+input ElementCreateOrConnectWithoutElement_affinity_elementToelement_affinity_element_idInput {
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_element_idInput!
+  where: ElementWhereUniqueInput!
+}
+
 input ElementCreateOrConnectWithoutElement_weakness_elementToelement_weakness_element_idInput {
   create: ElementCreateWithoutElement_weakness_elementToelement_weakness_element_idInput!
   where: ElementWhereUniqueInput!
@@ -1057,6 +1093,24 @@ input ElementCreateOrConnectWithoutElement_weakness_elementToelement_weakness_we
 }
 
 input ElementCreateWithoutCardInput {
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_affinity_elementInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_element_idInput
+  element_weakness_elementToelement_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_element_idInput
+  element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_weakness_element_idInput
+  name: String!
+}
+
+input ElementCreateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput {
+  card: CardCreateNestedManyWithoutElementInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_element_idInput
+  element_weakness_elementToelement_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_element_idInput
+  element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_weakness_element_idInput
+  name: String!
+}
+
+input ElementCreateWithoutElement_affinity_elementToelement_affinity_element_idInput {
+  card: CardCreateNestedManyWithoutElementInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_affinity_elementInput
   element_weakness_elementToelement_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_element_idInput
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_weakness_element_idInput
   name: String!
@@ -1064,12 +1118,16 @@ input ElementCreateWithoutCardInput {
 
 input ElementCreateWithoutElement_weakness_elementToelement_weakness_element_idInput {
   card: CardCreateNestedManyWithoutElementInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_affinity_elementInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_element_idInput
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_weakness_element_idInput
   name: String!
 }
 
 input ElementCreateWithoutElement_weakness_elementToelement_weakness_weakness_element_idInput {
   card: CardCreateNestedManyWithoutElementInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_affinity_elementInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_element_idInput
   element_weakness_elementToelement_weakness_element_id: Element_weaknessCreateNestedManyWithoutElement_elementToelement_weakness_element_idInput
   name: String!
 }
@@ -1116,6 +1174,8 @@ input ElementOrderByWithAggregationInput {
 
 input ElementOrderByWithRelationInput {
   card: CardOrderByRelationAggregateInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityOrderByRelationAggregateInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityOrderByRelationAggregateInput
   element_weakness_elementToelement_weakness_element_id: Element_weaknessOrderByRelationAggregateInput
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessOrderByRelationAggregateInput
   id: SortOrder
@@ -1150,6 +1210,8 @@ input ElementSumOrderByAggregateInput {
 
 input ElementUpdateInput {
   card: CardUpdateManyWithoutElementNestedInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_affinity_elementNestedInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_element_idNestedInput
   element_weakness_elementToelement_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_element_idNestedInput
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_weakness_element_idNestedInput
   name: StringFieldUpdateOperationsInput
@@ -1165,6 +1227,22 @@ input ElementUpdateOneRequiredWithoutCardNestedInput {
   create: ElementCreateWithoutCardInput
   update: ElementUpdateWithoutCardInput
   upsert: ElementUpsertWithoutCardInput
+}
+
+input ElementUpdateOneRequiredWithoutElement_affinity_elementToelement_affinity_affinity_elementNestedInput {
+  connect: ElementWhereUniqueInput
+  connectOrCreate: ElementCreateOrConnectWithoutElement_affinity_elementToelement_affinity_affinity_elementInput
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput
+  update: ElementUpdateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput
+  upsert: ElementUpsertWithoutElement_affinity_elementToelement_affinity_affinity_elementInput
+}
+
+input ElementUpdateOneRequiredWithoutElement_affinity_elementToelement_affinity_element_idNestedInput {
+  connect: ElementWhereUniqueInput
+  connectOrCreate: ElementCreateOrConnectWithoutElement_affinity_elementToelement_affinity_element_idInput
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_element_idInput
+  update: ElementUpdateWithoutElement_affinity_elementToelement_affinity_element_idInput
+  upsert: ElementUpsertWithoutElement_affinity_elementToelement_affinity_element_idInput
 }
 
 input ElementUpdateOneRequiredWithoutElement_weakness_elementToelement_weakness_element_idNestedInput {
@@ -1184,6 +1262,24 @@ input ElementUpdateOneRequiredWithoutElement_weakness_elementToelement_weakness_
 }
 
 input ElementUpdateWithoutCardInput {
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_affinity_elementNestedInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_element_idNestedInput
+  element_weakness_elementToelement_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_element_idNestedInput
+  element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_weakness_element_idNestedInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input ElementUpdateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput {
+  card: CardUpdateManyWithoutElementNestedInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_element_idNestedInput
+  element_weakness_elementToelement_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_element_idNestedInput
+  element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_weakness_element_idNestedInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input ElementUpdateWithoutElement_affinity_elementToelement_affinity_element_idInput {
+  card: CardUpdateManyWithoutElementNestedInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_affinity_elementNestedInput
   element_weakness_elementToelement_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_element_idNestedInput
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_weakness_element_idNestedInput
   name: StringFieldUpdateOperationsInput
@@ -1191,12 +1287,16 @@ input ElementUpdateWithoutCardInput {
 
 input ElementUpdateWithoutElement_weakness_elementToelement_weakness_element_idInput {
   card: CardUpdateManyWithoutElementNestedInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_affinity_elementNestedInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_element_idNestedInput
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_weakness_element_idNestedInput
   name: StringFieldUpdateOperationsInput
 }
 
 input ElementUpdateWithoutElement_weakness_elementToelement_weakness_weakness_element_idInput {
   card: CardUpdateManyWithoutElementNestedInput
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_affinity_elementNestedInput
+  element_affinity_elementToelement_affinity_element_id: Element_affinityUpdateManyWithoutElement_elementToelement_affinity_element_idNestedInput
   element_weakness_elementToelement_weakness_element_id: Element_weaknessUpdateManyWithoutElement_elementToelement_weakness_element_idNestedInput
   name: StringFieldUpdateOperationsInput
 }
@@ -1204,6 +1304,16 @@ input ElementUpdateWithoutElement_weakness_elementToelement_weakness_weakness_el
 input ElementUpsertWithoutCardInput {
   create: ElementCreateWithoutCardInput!
   update: ElementUpdateWithoutCardInput!
+}
+
+input ElementUpsertWithoutElement_affinity_elementToelement_affinity_affinity_elementInput {
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput!
+  update: ElementUpdateWithoutElement_affinity_elementToelement_affinity_affinity_elementInput!
+}
+
+input ElementUpsertWithoutElement_affinity_elementToelement_affinity_element_idInput {
+  create: ElementCreateWithoutElement_affinity_elementToelement_affinity_element_idInput!
+  update: ElementUpdateWithoutElement_affinity_elementToelement_affinity_element_idInput!
 }
 
 input ElementUpsertWithoutElement_weakness_elementToelement_weakness_element_idInput {
@@ -1221,6 +1331,8 @@ input ElementWhereInput {
   NOT: [ElementWhereInput!]
   OR: [ElementWhereInput!]
   card: CardListRelationFilter
+  element_affinity_elementToelement_affinity_affinity_element: Element_affinityListRelationFilter
+  element_affinity_elementToelement_affinity_element_id: Element_affinityListRelationFilter
   element_weakness_elementToelement_weakness_element_id: Element_weaknessListRelationFilter
   element_weakness_elementToelement_weakness_weakness_element_id: Element_weaknessListRelationFilter
   id: IntFilter
@@ -1229,6 +1341,300 @@ input ElementWhereInput {
 
 input ElementWhereUniqueInput {
   id: Int
+}
+
+type Element_affinity {
+  affinity_element: Int!
+  affinity_type: Int!
+  element_elementToelement_affinity_affinity_element: Element!
+  element_elementToelement_affinity_element_id: Element!
+  element_id: Int!
+}
+
+type Element_affinityAvgAggregate {
+  affinity_element: Float
+  affinity_type: Float
+  element_id: Float
+}
+
+input Element_affinityAvgOrderByAggregateInput {
+  affinity_element: SortOrder
+  affinity_type: SortOrder
+  element_id: SortOrder
+}
+
+type Element_affinityCountAggregate {
+  _all: Int!
+  affinity_element: Int!
+  affinity_type: Int!
+  element_id: Int!
+}
+
+input Element_affinityCountOrderByAggregateInput {
+  affinity_element: SortOrder
+  affinity_type: SortOrder
+  element_id: SortOrder
+}
+
+input Element_affinityCreateInput {
+  affinity_type: Int!
+  element_elementToelement_affinity_affinity_element: ElementCreateNestedOneWithoutElement_affinity_elementToelement_affinity_affinity_elementInput!
+  element_elementToelement_affinity_element_id: ElementCreateNestedOneWithoutElement_affinity_elementToelement_affinity_element_idInput!
+}
+
+input Element_affinityCreateManyElement_elementToelement_affinity_affinity_elementInput {
+  affinity_type: Int!
+  element_id: Int!
+}
+
+input Element_affinityCreateManyElement_elementToelement_affinity_affinity_elementInputEnvelope {
+  data: [Element_affinityCreateManyElement_elementToelement_affinity_affinity_elementInput!]!
+  skipDuplicates: Boolean
+}
+
+input Element_affinityCreateManyElement_elementToelement_affinity_element_idInput {
+  affinity_element: Int!
+  affinity_type: Int!
+}
+
+input Element_affinityCreateManyElement_elementToelement_affinity_element_idInputEnvelope {
+  data: [Element_affinityCreateManyElement_elementToelement_affinity_element_idInput!]!
+  skipDuplicates: Boolean
+}
+
+input Element_affinityCreateManyInput {
+  affinity_element: Int!
+  affinity_type: Int!
+  element_id: Int!
+}
+
+input Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_affinity_elementInput {
+  connect: [Element_affinityWhereUniqueInput!]
+  connectOrCreate: [Element_affinityCreateOrConnectWithoutElement_elementToelement_affinity_affinity_elementInput!]
+  create: [Element_affinityCreateWithoutElement_elementToelement_affinity_affinity_elementInput!]
+  createMany: Element_affinityCreateManyElement_elementToelement_affinity_affinity_elementInputEnvelope
+}
+
+input Element_affinityCreateNestedManyWithoutElement_elementToelement_affinity_element_idInput {
+  connect: [Element_affinityWhereUniqueInput!]
+  connectOrCreate: [Element_affinityCreateOrConnectWithoutElement_elementToelement_affinity_element_idInput!]
+  create: [Element_affinityCreateWithoutElement_elementToelement_affinity_element_idInput!]
+  createMany: Element_affinityCreateManyElement_elementToelement_affinity_element_idInputEnvelope
+}
+
+input Element_affinityCreateOrConnectWithoutElement_elementToelement_affinity_affinity_elementInput {
+  create: Element_affinityCreateWithoutElement_elementToelement_affinity_affinity_elementInput!
+  where: Element_affinityWhereUniqueInput!
+}
+
+input Element_affinityCreateOrConnectWithoutElement_elementToelement_affinity_element_idInput {
+  create: Element_affinityCreateWithoutElement_elementToelement_affinity_element_idInput!
+  where: Element_affinityWhereUniqueInput!
+}
+
+input Element_affinityCreateWithoutElement_elementToelement_affinity_affinity_elementInput {
+  affinity_type: Int!
+  element_elementToelement_affinity_element_id: ElementCreateNestedOneWithoutElement_affinity_elementToelement_affinity_element_idInput!
+}
+
+input Element_affinityCreateWithoutElement_elementToelement_affinity_element_idInput {
+  affinity_type: Int!
+  element_elementToelement_affinity_affinity_element: ElementCreateNestedOneWithoutElement_affinity_elementToelement_affinity_affinity_elementInput!
+}
+
+type Element_affinityGroupBy {
+  _avg: Element_affinityAvgAggregate
+  _count: Element_affinityCountAggregate
+  _max: Element_affinityMaxAggregate
+  _min: Element_affinityMinAggregate
+  _sum: Element_affinitySumAggregate
+  affinity_element: Int!
+  affinity_type: Int!
+  element_id: Int!
+}
+
+input Element_affinityListRelationFilter {
+  every: Element_affinityWhereInput
+  none: Element_affinityWhereInput
+  some: Element_affinityWhereInput
+}
+
+type Element_affinityMaxAggregate {
+  affinity_element: Int
+  affinity_type: Int
+  element_id: Int
+}
+
+input Element_affinityMaxOrderByAggregateInput {
+  affinity_element: SortOrder
+  affinity_type: SortOrder
+  element_id: SortOrder
+}
+
+type Element_affinityMinAggregate {
+  affinity_element: Int
+  affinity_type: Int
+  element_id: Int
+}
+
+input Element_affinityMinOrderByAggregateInput {
+  affinity_element: SortOrder
+  affinity_type: SortOrder
+  element_id: SortOrder
+}
+
+input Element_affinityOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input Element_affinityOrderByWithAggregationInput {
+  _avg: Element_affinityAvgOrderByAggregateInput
+  _count: Element_affinityCountOrderByAggregateInput
+  _max: Element_affinityMaxOrderByAggregateInput
+  _min: Element_affinityMinOrderByAggregateInput
+  _sum: Element_affinitySumOrderByAggregateInput
+  affinity_element: SortOrder
+  affinity_type: SortOrder
+  element_id: SortOrder
+}
+
+input Element_affinityOrderByWithRelationInput {
+  affinity_element: SortOrder
+  affinity_type: SortOrder
+  element_elementToelement_affinity_affinity_element: ElementOrderByWithRelationInput
+  element_elementToelement_affinity_element_id: ElementOrderByWithRelationInput
+  element_id: SortOrder
+}
+
+enum Element_affinityScalarFieldEnum {
+  affinity_element
+  affinity_type
+  element_id
+}
+
+input Element_affinityScalarWhereInput {
+  AND: [Element_affinityScalarWhereInput!]
+  NOT: [Element_affinityScalarWhereInput!]
+  OR: [Element_affinityScalarWhereInput!]
+  affinity_element: IntFilter
+  affinity_type: IntFilter
+  element_id: IntFilter
+}
+
+input Element_affinityScalarWhereWithAggregatesInput {
+  AND: [Element_affinityScalarWhereWithAggregatesInput!]
+  NOT: [Element_affinityScalarWhereWithAggregatesInput!]
+  OR: [Element_affinityScalarWhereWithAggregatesInput!]
+  affinity_element: IntWithAggregatesFilter
+  affinity_type: IntWithAggregatesFilter
+  element_id: IntWithAggregatesFilter
+}
+
+type Element_affinitySumAggregate {
+  affinity_element: Int
+  affinity_type: Int
+  element_id: Int
+}
+
+input Element_affinitySumOrderByAggregateInput {
+  affinity_element: SortOrder
+  affinity_type: SortOrder
+  element_id: SortOrder
+}
+
+input Element_affinityUpdateInput {
+  affinity_type: IntFieldUpdateOperationsInput
+  element_elementToelement_affinity_affinity_element: ElementUpdateOneRequiredWithoutElement_affinity_elementToelement_affinity_affinity_elementNestedInput
+  element_elementToelement_affinity_element_id: ElementUpdateOneRequiredWithoutElement_affinity_elementToelement_affinity_element_idNestedInput
+}
+
+input Element_affinityUpdateManyMutationInput {
+  affinity_type: IntFieldUpdateOperationsInput
+}
+
+input Element_affinityUpdateManyWithWhereWithoutElement_elementToelement_affinity_affinity_elementInput {
+  data: Element_affinityUpdateManyMutationInput!
+  where: Element_affinityScalarWhereInput!
+}
+
+input Element_affinityUpdateManyWithWhereWithoutElement_elementToelement_affinity_element_idInput {
+  data: Element_affinityUpdateManyMutationInput!
+  where: Element_affinityScalarWhereInput!
+}
+
+input Element_affinityUpdateManyWithoutElement_elementToelement_affinity_affinity_elementNestedInput {
+  connect: [Element_affinityWhereUniqueInput!]
+  connectOrCreate: [Element_affinityCreateOrConnectWithoutElement_elementToelement_affinity_affinity_elementInput!]
+  create: [Element_affinityCreateWithoutElement_elementToelement_affinity_affinity_elementInput!]
+  createMany: Element_affinityCreateManyElement_elementToelement_affinity_affinity_elementInputEnvelope
+  delete: [Element_affinityWhereUniqueInput!]
+  deleteMany: [Element_affinityScalarWhereInput!]
+  disconnect: [Element_affinityWhereUniqueInput!]
+  set: [Element_affinityWhereUniqueInput!]
+  update: [Element_affinityUpdateWithWhereUniqueWithoutElement_elementToelement_affinity_affinity_elementInput!]
+  updateMany: [Element_affinityUpdateManyWithWhereWithoutElement_elementToelement_affinity_affinity_elementInput!]
+  upsert: [Element_affinityUpsertWithWhereUniqueWithoutElement_elementToelement_affinity_affinity_elementInput!]
+}
+
+input Element_affinityUpdateManyWithoutElement_elementToelement_affinity_element_idNestedInput {
+  connect: [Element_affinityWhereUniqueInput!]
+  connectOrCreate: [Element_affinityCreateOrConnectWithoutElement_elementToelement_affinity_element_idInput!]
+  create: [Element_affinityCreateWithoutElement_elementToelement_affinity_element_idInput!]
+  createMany: Element_affinityCreateManyElement_elementToelement_affinity_element_idInputEnvelope
+  delete: [Element_affinityWhereUniqueInput!]
+  deleteMany: [Element_affinityScalarWhereInput!]
+  disconnect: [Element_affinityWhereUniqueInput!]
+  set: [Element_affinityWhereUniqueInput!]
+  update: [Element_affinityUpdateWithWhereUniqueWithoutElement_elementToelement_affinity_element_idInput!]
+  updateMany: [Element_affinityUpdateManyWithWhereWithoutElement_elementToelement_affinity_element_idInput!]
+  upsert: [Element_affinityUpsertWithWhereUniqueWithoutElement_elementToelement_affinity_element_idInput!]
+}
+
+input Element_affinityUpdateWithWhereUniqueWithoutElement_elementToelement_affinity_affinity_elementInput {
+  data: Element_affinityUpdateWithoutElement_elementToelement_affinity_affinity_elementInput!
+  where: Element_affinityWhereUniqueInput!
+}
+
+input Element_affinityUpdateWithWhereUniqueWithoutElement_elementToelement_affinity_element_idInput {
+  data: Element_affinityUpdateWithoutElement_elementToelement_affinity_element_idInput!
+  where: Element_affinityWhereUniqueInput!
+}
+
+input Element_affinityUpdateWithoutElement_elementToelement_affinity_affinity_elementInput {
+  affinity_type: IntFieldUpdateOperationsInput
+  element_elementToelement_affinity_element_id: ElementUpdateOneRequiredWithoutElement_affinity_elementToelement_affinity_element_idNestedInput
+}
+
+input Element_affinityUpdateWithoutElement_elementToelement_affinity_element_idInput {
+  affinity_type: IntFieldUpdateOperationsInput
+  element_elementToelement_affinity_affinity_element: ElementUpdateOneRequiredWithoutElement_affinity_elementToelement_affinity_affinity_elementNestedInput
+}
+
+input Element_affinityUpsertWithWhereUniqueWithoutElement_elementToelement_affinity_affinity_elementInput {
+  create: Element_affinityCreateWithoutElement_elementToelement_affinity_affinity_elementInput!
+  update: Element_affinityUpdateWithoutElement_elementToelement_affinity_affinity_elementInput!
+  where: Element_affinityWhereUniqueInput!
+}
+
+input Element_affinityUpsertWithWhereUniqueWithoutElement_elementToelement_affinity_element_idInput {
+  create: Element_affinityCreateWithoutElement_elementToelement_affinity_element_idInput!
+  update: Element_affinityUpdateWithoutElement_elementToelement_affinity_element_idInput!
+  where: Element_affinityWhereUniqueInput!
+}
+
+input Element_affinityWhereInput {
+  AND: [Element_affinityWhereInput!]
+  NOT: [Element_affinityWhereInput!]
+  OR: [Element_affinityWhereInput!]
+  affinity_element: IntFilter
+  affinity_type: IntFilter
+  element_elementToelement_affinity_affinity_element: ElementRelationFilter
+  element_elementToelement_affinity_element_id: ElementRelationFilter
+  element_id: IntFilter
+}
+
+input Element_affinityWhereUniqueInput {
+  element_id_affinity_element: element_affinityElement_idAffinity_elementCompoundUniqueInput
 }
 
 type Element_weakness {
@@ -1627,6 +2033,7 @@ type Mutation {
   createManyCard_rank(data: [Card_rankCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyCard_type(data: [Card_typeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyElement(data: [ElementCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyElement_affinity(data: [Element_affinityCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyElement_weakness(data: [Element_weaknessCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPlayer(data: [PlayerCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPlayer_card(data: [Player_cardCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
@@ -1634,6 +2041,7 @@ type Mutation {
   createOneCard_rank(data: Card_rankCreateInput!): Card_rank!
   createOneCard_type(data: Card_typeCreateInput!): Card_type!
   createOneElement(data: ElementCreateInput!): Element!
+  createOneElement_affinity(data: Element_affinityCreateInput!): Element_affinity!
   createOneElement_weakness(data: Element_weaknessCreateInput!): Element_weakness!
   createOnePlayer(data: PlayerCreateInput!): Player!
   createOnePlayer_card(data: Player_cardCreateInput!): Player_card!
@@ -1641,6 +2049,7 @@ type Mutation {
   deleteManyCard_rank(where: Card_rankWhereInput): AffectedRowsOutput!
   deleteManyCard_type(where: Card_typeWhereInput): AffectedRowsOutput!
   deleteManyElement(where: ElementWhereInput): AffectedRowsOutput!
+  deleteManyElement_affinity(where: Element_affinityWhereInput): AffectedRowsOutput!
   deleteManyElement_weakness(where: Element_weaknessWhereInput): AffectedRowsOutput!
   deleteManyPlayer(where: PlayerWhereInput): AffectedRowsOutput!
   deleteManyPlayer_card(where: Player_cardWhereInput): AffectedRowsOutput!
@@ -1648,6 +2057,7 @@ type Mutation {
   deleteOneCard_rank(where: Card_rankWhereUniqueInput!): Card_rank
   deleteOneCard_type(where: Card_typeWhereUniqueInput!): Card_type
   deleteOneElement(where: ElementWhereUniqueInput!): Element
+  deleteOneElement_affinity(where: Element_affinityWhereUniqueInput!): Element_affinity
   deleteOneElement_weakness(where: Element_weaknessWhereUniqueInput!): Element_weakness
   deleteOnePlayer(where: PlayerWhereUniqueInput!): Player
   deleteOnePlayer_card(where: Player_cardWhereUniqueInput!): Player_card
@@ -1655,6 +2065,7 @@ type Mutation {
   updateManyCard_rank(data: Card_rankUpdateManyMutationInput!, where: Card_rankWhereInput): AffectedRowsOutput!
   updateManyCard_type(data: Card_typeUpdateManyMutationInput!, where: Card_typeWhereInput): AffectedRowsOutput!
   updateManyElement(data: ElementUpdateManyMutationInput!, where: ElementWhereInput): AffectedRowsOutput!
+  updateManyElement_affinity(data: Element_affinityUpdateManyMutationInput!, where: Element_affinityWhereInput): AffectedRowsOutput!
   updateManyElement_weakness(data: Element_weaknessUpdateManyMutationInput!, where: Element_weaknessWhereInput): AffectedRowsOutput!
   updateManyPlayer(data: PlayerUpdateManyMutationInput!, where: PlayerWhereInput): AffectedRowsOutput!
   updateManyPlayer_card(data: Player_cardUpdateManyMutationInput!, where: Player_cardWhereInput): AffectedRowsOutput!
@@ -1662,6 +2073,7 @@ type Mutation {
   updateOneCard_rank(data: Card_rankUpdateInput!, where: Card_rankWhereUniqueInput!): Card_rank
   updateOneCard_type(data: Card_typeUpdateInput!, where: Card_typeWhereUniqueInput!): Card_type
   updateOneElement(data: ElementUpdateInput!, where: ElementWhereUniqueInput!): Element
+  updateOneElement_affinity(data: Element_affinityUpdateInput!, where: Element_affinityWhereUniqueInput!): Element_affinity
   updateOneElement_weakness(data: Element_weaknessUpdateInput!, where: Element_weaknessWhereUniqueInput!): Element_weakness
   updateOnePlayer(data: PlayerUpdateInput!, where: PlayerWhereUniqueInput!): Player
   updateOnePlayer_card(data: Player_cardUpdateInput!, where: Player_cardWhereUniqueInput!): Player_card
@@ -1669,6 +2081,7 @@ type Mutation {
   upsertOneCard_rank(create: Card_rankCreateInput!, update: Card_rankUpdateInput!, where: Card_rankWhereUniqueInput!): Card_rank!
   upsertOneCard_type(create: Card_typeCreateInput!, update: Card_typeUpdateInput!, where: Card_typeWhereUniqueInput!): Card_type!
   upsertOneElement(create: ElementCreateInput!, update: ElementUpdateInput!, where: ElementWhereUniqueInput!): Element!
+  upsertOneElement_affinity(create: Element_affinityCreateInput!, update: Element_affinityUpdateInput!, where: Element_affinityWhereUniqueInput!): Element_affinity!
   upsertOneElement_weakness(create: Element_weaknessCreateInput!, update: Element_weaknessUpdateInput!, where: Element_weaknessWhereUniqueInput!): Element_weakness!
   upsertOnePlayer(create: PlayerCreateInput!, update: PlayerUpdateInput!, where: PlayerWhereUniqueInput!): Player!
   upsertOnePlayer_card(create: Player_cardCreateInput!, update: Player_cardUpdateInput!, where: Player_cardWhereUniqueInput!): Player_card!
@@ -2279,6 +2692,7 @@ type Query {
   aggregateCard_rank(cursor: Card_rankWhereUniqueInput, orderBy: [Card_rankOrderByWithRelationInput!], skip: Int, take: Int, where: Card_rankWhereInput): AggregateCard_rank!
   aggregateCard_type(cursor: Card_typeWhereUniqueInput, orderBy: [Card_typeOrderByWithRelationInput!], skip: Int, take: Int, where: Card_typeWhereInput): AggregateCard_type!
   aggregateElement(cursor: ElementWhereUniqueInput, orderBy: [ElementOrderByWithRelationInput!], skip: Int, take: Int, where: ElementWhereInput): AggregateElement!
+  aggregateElement_affinity(cursor: Element_affinityWhereUniqueInput, orderBy: [Element_affinityOrderByWithRelationInput!], skip: Int, take: Int, where: Element_affinityWhereInput): AggregateElement_affinity!
   aggregateElement_weakness(cursor: Element_weaknessWhereUniqueInput, orderBy: [Element_weaknessOrderByWithRelationInput!], skip: Int, take: Int, where: Element_weaknessWhereInput): AggregateElement_weakness!
   aggregatePlayer(cursor: PlayerWhereUniqueInput, orderBy: [PlayerOrderByWithRelationInput!], skip: Int, take: Int, where: PlayerWhereInput): AggregatePlayer!
   aggregatePlayer_card(cursor: Player_cardWhereUniqueInput, orderBy: [Player_cardOrderByWithRelationInput!], skip: Int, take: Int, where: Player_cardWhereInput): AggregatePlayer_card!
@@ -2289,6 +2703,8 @@ type Query {
   card_types(cursor: Card_typeWhereUniqueInput, distinct: [Card_typeScalarFieldEnum!], orderBy: [Card_typeOrderByWithRelationInput!], skip: Int, take: Int, where: Card_typeWhereInput): [Card_type!]!
   cards(cursor: CardWhereUniqueInput, distinct: [CardScalarFieldEnum!], orderBy: [CardOrderByWithRelationInput!], skip: Int, take: Int, where: CardWhereInput): [Card!]!
   element(where: ElementWhereUniqueInput!): Element
+  element_affinities(cursor: Element_affinityWhereUniqueInput, distinct: [Element_affinityScalarFieldEnum!], orderBy: [Element_affinityOrderByWithRelationInput!], skip: Int, take: Int, where: Element_affinityWhereInput): [Element_affinity!]!
+  element_affinity(where: Element_affinityWhereUniqueInput!): Element_affinity
   element_weakness(where: Element_weaknessWhereUniqueInput!): Element_weakness
   element_weaknesses(cursor: Element_weaknessWhereUniqueInput, distinct: [Element_weaknessScalarFieldEnum!], orderBy: [Element_weaknessOrderByWithRelationInput!], skip: Int, take: Int, where: Element_weaknessWhereInput): [Element_weakness!]!
   elements(cursor: ElementWhereUniqueInput, distinct: [ElementScalarFieldEnum!], orderBy: [ElementOrderByWithRelationInput!], skip: Int, take: Int, where: ElementWhereInput): [Element!]!
@@ -2296,6 +2712,7 @@ type Query {
   findFirstCard_rank(cursor: Card_rankWhereUniqueInput, distinct: [Card_rankScalarFieldEnum!], orderBy: [Card_rankOrderByWithRelationInput!], skip: Int, take: Int, where: Card_rankWhereInput): Card_rank
   findFirstCard_type(cursor: Card_typeWhereUniqueInput, distinct: [Card_typeScalarFieldEnum!], orderBy: [Card_typeOrderByWithRelationInput!], skip: Int, take: Int, where: Card_typeWhereInput): Card_type
   findFirstElement(cursor: ElementWhereUniqueInput, distinct: [ElementScalarFieldEnum!], orderBy: [ElementOrderByWithRelationInput!], skip: Int, take: Int, where: ElementWhereInput): Element
+  findFirstElement_affinity(cursor: Element_affinityWhereUniqueInput, distinct: [Element_affinityScalarFieldEnum!], orderBy: [Element_affinityOrderByWithRelationInput!], skip: Int, take: Int, where: Element_affinityWhereInput): Element_affinity
   findFirstElement_weakness(cursor: Element_weaknessWhereUniqueInput, distinct: [Element_weaknessScalarFieldEnum!], orderBy: [Element_weaknessOrderByWithRelationInput!], skip: Int, take: Int, where: Element_weaknessWhereInput): Element_weakness
   findFirstPlayer(cursor: PlayerWhereUniqueInput, distinct: [PlayerScalarFieldEnum!], orderBy: [PlayerOrderByWithRelationInput!], skip: Int, take: Int, where: PlayerWhereInput): Player
   findFirstPlayer_card(cursor: Player_cardWhereUniqueInput, distinct: [Player_cardScalarFieldEnum!], orderBy: [Player_cardOrderByWithRelationInput!], skip: Int, take: Int, where: Player_cardWhereInput): Player_card
@@ -2303,6 +2720,7 @@ type Query {
   groupByCard_rank(by: [Card_rankScalarFieldEnum!]!, having: Card_rankScalarWhereWithAggregatesInput, orderBy: [Card_rankOrderByWithAggregationInput!], skip: Int, take: Int, where: Card_rankWhereInput): [Card_rankGroupBy!]!
   groupByCard_type(by: [Card_typeScalarFieldEnum!]!, having: Card_typeScalarWhereWithAggregatesInput, orderBy: [Card_typeOrderByWithAggregationInput!], skip: Int, take: Int, where: Card_typeWhereInput): [Card_typeGroupBy!]!
   groupByElement(by: [ElementScalarFieldEnum!]!, having: ElementScalarWhereWithAggregatesInput, orderBy: [ElementOrderByWithAggregationInput!], skip: Int, take: Int, where: ElementWhereInput): [ElementGroupBy!]!
+  groupByElement_affinity(by: [Element_affinityScalarFieldEnum!]!, having: Element_affinityScalarWhereWithAggregatesInput, orderBy: [Element_affinityOrderByWithAggregationInput!], skip: Int, take: Int, where: Element_affinityWhereInput): [Element_affinityGroupBy!]!
   groupByElement_weakness(by: [Element_weaknessScalarFieldEnum!]!, having: Element_weaknessScalarWhereWithAggregatesInput, orderBy: [Element_weaknessOrderByWithAggregationInput!], skip: Int, take: Int, where: Element_weaknessWhereInput): [Element_weaknessGroupBy!]!
   groupByPlayer(by: [PlayerScalarFieldEnum!]!, having: PlayerScalarWhereWithAggregatesInput, orderBy: [PlayerOrderByWithAggregationInput!], skip: Int, take: Int, where: PlayerWhereInput): [PlayerGroupBy!]!
   groupByPlayer_card(by: [Player_cardScalarFieldEnum!]!, having: Player_cardScalarWhereWithAggregatesInput, orderBy: [Player_cardOrderByWithAggregationInput!], skip: Int, take: Int, where: Player_cardWhereInput): [Player_cardGroupBy!]!
@@ -2350,6 +2768,11 @@ input StringWithAggregatesFilter {
   not: NestedStringWithAggregatesFilter
   notIn: [String!]
   startsWith: String
+}
+
+input element_affinityElement_idAffinity_elementCompoundUniqueInput {
+  affinity_element: Int!
+  element_id: Int!
 }
 
 input element_weaknessElement_idWeakness_element_idCompoundUniqueInput {
