@@ -8,8 +8,8 @@ generator typegraphql {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
@@ -22,9 +22,9 @@ model card {
   rank_id      Int?
   card_type_id Int           @default(1)
   max_chain    Int           @default(1)
-  card_type    card_type     @relation(fields: [card_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_card_card_type")
-  element      element       @relation(fields: [element_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_card_element")
-  card_rank    card_rank?    @relation(fields: [rank_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_card_card_rank")
+  card_rank    card_rank?    @relation(fields: [rank_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_card_card_rank")
+  card_type    card_type     @relation(fields: [card_type_id], references: [id], onUpdate: Restrict, map: "FK_card_card_type")
+  element      element       @relation(fields: [element_id], references: [id], onUpdate: Restrict, map: "FK_card_element")
   player_card  player_card[]
 
   @@index([rank_id], map: "FK_card_card_rank")
@@ -49,6 +49,8 @@ model element {
   id                                                             Int                @id @default(autoincrement())
   name                                                           String             @db.TinyText
   card                                                           card[]
+  element_affinity_elementToelement_affinity_element_id          element_affinity[] @relation("elementToelement_affinity_element_id")
+  element_affinity_elementToelement_affinity_affinity_element    element_affinity[] @relation("elementToelement_affinity_affinity_element")
   element_weakness_elementToelement_weakness_element_id          element_weakness[] @relation("elementToelement_weakness_element_id")
   element_weakness_elementToelement_weakness_weakness_element_id element_weakness[] @relation("elementToelement_weakness_weakness_element_id")
 }
@@ -80,4 +82,15 @@ model player_card {
 
   @@index([card_id], map: "FK_player_card_card")
   @@index([player_id], map: "FK_player_card_player")
+}
+
+model element_affinity {
+  element_id                                         Int
+  affinity_element                                   Int
+  affinity_type                                      Int
+  element_elementToelement_affinity_element_id       element @relation("elementToelement_affinity_element_id", fields: [element_id], references: [id], onUpdate: Restrict, map: "FK_element_affinity_element")
+  element_elementToelement_affinity_affinity_element element @relation("elementToelement_affinity_affinity_element", fields: [affinity_element], references: [id], onUpdate: Restrict, map: "FK_element_affinity_element_2")
+
+  @@unique([element_id, affinity_element], map: "element_id_affinity_element")
+  @@index([affinity_element], map: "FK_element_affinity_element_2")
 }
