@@ -35,6 +35,11 @@ export class PlayerWhereInput {
   })
   name?: StringFilter | undefined;
 
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true
+  })
+  password?: StringFilter | undefined;
+
   @TypeGraphQL.Field(_type => Player_cardListRelationFilter, {
     nullable: true
   })

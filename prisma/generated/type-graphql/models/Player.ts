@@ -19,6 +19,11 @@ export class Player {
   })
   name!: string;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  password!: string;
+
   player_card?: Player_card[];
 
   @TypeGraphQL.Field(_type => PlayerCount, {

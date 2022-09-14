@@ -12,4 +12,9 @@ export class PlayerUpdateManyMutationInput {
     nullable: true
   })
   name?: StringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  password?: StringFieldUpdateOperationsInput | undefined;
 }

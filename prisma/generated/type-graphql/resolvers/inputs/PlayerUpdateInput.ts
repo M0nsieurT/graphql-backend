@@ -14,6 +14,11 @@ export class PlayerUpdateInput {
   })
   name?: StringFieldUpdateOperationsInput | undefined;
 
+  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  password?: StringFieldUpdateOperationsInput | undefined;
+
   @TypeGraphQL.Field(_type => Player_cardUpdateManyWithoutPlayerNestedInput, {
     nullable: true
   })

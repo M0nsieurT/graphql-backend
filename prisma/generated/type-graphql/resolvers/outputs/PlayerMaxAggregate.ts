@@ -16,4 +16,9 @@ export class PlayerMaxAggregate {
     nullable: true
   })
   name!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  password!: string | null;
 }

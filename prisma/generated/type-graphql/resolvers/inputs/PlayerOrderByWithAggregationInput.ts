@@ -23,6 +23,11 @@ export class PlayerOrderByWithAggregationInput {
   })
   name?: "asc" | "desc" | undefined;
 
+  @TypeGraphQL.Field(_type => SortOrder, {
+    nullable: true
+  })
+  password?: "asc" | "desc" | undefined;
+
   @TypeGraphQL.Field(_type => PlayerCountOrderByAggregateInput, {
     nullable: true
   })

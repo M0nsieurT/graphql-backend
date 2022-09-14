@@ -16,4 +16,9 @@ export class PlayerCreateManyInput {
     nullable: false
   })
   name!: string;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  password!: string;
 }

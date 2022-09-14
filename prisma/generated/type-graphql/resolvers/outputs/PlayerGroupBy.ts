@@ -22,6 +22,11 @@ export class PlayerGroupBy {
   })
   name!: string;
 
+  @TypeGraphQL.Field(_type => String, {
+    nullable: false
+  })
+  password!: string;
+
   @TypeGraphQL.Field(_type => PlayerCountAggregate, {
     nullable: true
   })

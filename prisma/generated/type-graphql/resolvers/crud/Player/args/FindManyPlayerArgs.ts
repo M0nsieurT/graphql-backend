@@ -35,5 +35,5 @@ export class FindManyPlayerArgs {
   @TypeGraphQL.Field(_type => [PlayerScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "name"> | undefined;
+  distinct?: Array<"id" | "name" | "password"> | undefined;
 }

@@ -20,7 +20,7 @@ export class GroupByPlayerArgs {
   @TypeGraphQL.Field(_type => [PlayerScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "name">;
+  by!: Array<"id" | "name" | "password">;
 
   @TypeGraphQL.Field(_type => PlayerScalarWhereWithAggregatesInput, {
     nullable: true
