@@ -601,7 +601,7 @@ const inputsInfo = {
   Element_weaknessScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "element_id", "weakness_element_id", "coef"],
   PlayerWhereInput: ["AND", "OR", "NOT", "id", "name", "password", "player_card"],
   PlayerOrderByWithRelationInput: ["id", "name", "password", "player_card"],
-  PlayerWhereUniqueInput: ["id"],
+  PlayerWhereUniqueInput: ["id", "name"],
   PlayerOrderByWithAggregationInput: ["id", "name", "password", "_count", "_avg", "_max", "_min", "_sum"],
   PlayerScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "name", "password"],
   Player_cardWhereInput: ["AND", "OR", "NOT", "id", "name", "card_id", "player_id", "card", "player"],

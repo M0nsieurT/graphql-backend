@@ -7,3 +7,4 @@ export { Element_weaknessScalarFieldEnum } from "./Element_weaknessScalarFieldEn
 export { PlayerScalarFieldEnum } from "./PlayerScalarFieldEnum";
 export { Player_cardScalarFieldEnum } from "./Player_cardScalarFieldEnum";
 export { SortOrder } from "./SortOrder";
+export { TransactionIsolationLevel } from "./TransactionIsolationLevel";

@@ -68,7 +68,7 @@ model element_weakness {
 
 model player {
   id          Int           @id @default(autoincrement())
-  name        String        @db.Text
+  name        String        @unique(length: 100, map: "UNIQUE_name") @db.Text
   password    String        @db.Text
   player_card player_card[]
 }
