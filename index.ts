@@ -4,6 +4,7 @@ import { ApolloServer } from "apollo-server";
 import path from "path";
 import { PrismaClient } from "@prisma/client";
 import { resolvers } from "./prisma/generated/type-graphql";
+import bcrypt from "bcrypt";
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault
@@ -55,6 +56,9 @@ async function main() {
       process.env.NODE_ENV === "production" ? ApolloServerPluginLandingPageProductionDefault({ footer: false }): ApolloServerPluginLandingPageLocalDefault({ footer: false, embed: true }),
     ],
   });
+
+  const hashedpassword = bcrypt.hashSync('password', 8);
+  console.log(hashedpassword);
   
   server.listen(4000).then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);

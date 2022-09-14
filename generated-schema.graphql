@@ -2214,6 +2214,7 @@ type Player {
   _count: PlayerCount
   id: Int!
   name: String!
+  password: String!
   player_card(cursor: Player_cardWhereUniqueInput, distinct: [Player_cardScalarFieldEnum!], orderBy: [Player_cardOrderByWithRelationInput!], skip: Int, take: Int, where: Player_cardWhereInput): [Player_card!]!
 }
 
@@ -2233,21 +2234,25 @@ type PlayerCountAggregate {
   _all: Int!
   id: Int!
   name: Int!
+  password: Int!
 }
 
 input PlayerCountOrderByAggregateInput {
   id: SortOrder
   name: SortOrder
+  password: SortOrder
 }
 
 input PlayerCreateInput {
   name: String!
+  password: String!
   player_card: Player_cardCreateNestedManyWithoutPlayerInput
 }
 
 input PlayerCreateManyInput {
   id: Int
   name: String!
+  password: String!
 }
 
 input PlayerCreateNestedOneWithoutPlayer_cardInput {
@@ -2263,6 +2268,7 @@ input PlayerCreateOrConnectWithoutPlayer_cardInput {
 
 input PlayerCreateWithoutPlayer_cardInput {
   name: String!
+  password: String!
 }
 
 type PlayerGroupBy {
@@ -2273,26 +2279,31 @@ type PlayerGroupBy {
   _sum: PlayerSumAggregate
   id: Int!
   name: String!
+  password: String!
 }
 
 type PlayerMaxAggregate {
   id: Int
   name: String
+  password: String
 }
 
 input PlayerMaxOrderByAggregateInput {
   id: SortOrder
   name: SortOrder
+  password: SortOrder
 }
 
 type PlayerMinAggregate {
   id: Int
   name: String
+  password: String
 }
 
 input PlayerMinOrderByAggregateInput {
   id: SortOrder
   name: SortOrder
+  password: SortOrder
 }
 
 input PlayerOrderByWithAggregationInput {
@@ -2303,11 +2314,13 @@ input PlayerOrderByWithAggregationInput {
   _sum: PlayerSumOrderByAggregateInput
   id: SortOrder
   name: SortOrder
+  password: SortOrder
 }
 
 input PlayerOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
+  password: SortOrder
   player_card: Player_cardOrderByRelationAggregateInput
 }
 
@@ -2319,6 +2332,7 @@ input PlayerRelationFilter {
 enum PlayerScalarFieldEnum {
   id
   name
+  password
 }
 
 input PlayerScalarWhereWithAggregatesInput {
@@ -2327,6 +2341,7 @@ input PlayerScalarWhereWithAggregatesInput {
   OR: [PlayerScalarWhereWithAggregatesInput!]
   id: IntWithAggregatesFilter
   name: StringWithAggregatesFilter
+  password: StringWithAggregatesFilter
 }
 
 type PlayerSumAggregate {
@@ -2339,11 +2354,13 @@ input PlayerSumOrderByAggregateInput {
 
 input PlayerUpdateInput {
   name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
   player_card: Player_cardUpdateManyWithoutPlayerNestedInput
 }
 
 input PlayerUpdateManyMutationInput {
   name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input PlayerUpdateOneRequiredWithoutPlayer_cardNestedInput {
@@ -2356,6 +2373,7 @@ input PlayerUpdateOneRequiredWithoutPlayer_cardNestedInput {
 
 input PlayerUpdateWithoutPlayer_cardInput {
   name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input PlayerUpsertWithoutPlayer_cardInput {
@@ -2369,6 +2387,7 @@ input PlayerWhereInput {
   OR: [PlayerWhereInput!]
   id: IntFilter
   name: StringFilter
+  password: StringFilter
   player_card: Player_cardListRelationFilter
 }
 
